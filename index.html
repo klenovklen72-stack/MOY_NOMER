@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серьезные знакомства | Твой город</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #ff6b9d 0%, #ff4785 50%, #e2336e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path fill="rgba(255,255,255,0.1)" d="M10,3.5C10,1,7,0,5,0S0,1,0,3.5C0,6,5,9,5,9S10,6,10,3.5z"/></pattern></defs><rect fill="url(%23hearts)" width="100" height="100"/></svg>');
+            animation: float 20s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-20px) translateX(20px); }
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            width: 100%;
+            max-width: 420px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            background: linear-gradient(135deg, #ff3366, #ff6699);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 4px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 2px;
+        }
+        .header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff3366;
+            margin: 25px auto 15px;
+            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .profile-content {
+            padding: 0 25px;
+        }
+        .profile-name {
+            color: #ff3366;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .profile-age {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat {
+            background: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #666;
+            border: 1px solid #e9ecef;
+        }
+        .stat.online {
+            background: #4CAF50;
+            color: white;
+        }
+        .bio {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #ff3366;
+            position: relative;
+        }
+        .bio::before {
+            content: '"';
+            font-size: 40px;
+            color: #ff3366;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            opacity: 0.3;
+        }
+        .bio-text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.5;
+            font-size: 15px;
+            padding-left: 10px;
+        }
+        .actions {
+            padding: 0 25px 25px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn-next {
+            background: #6c757d;
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        .btn-next:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(108, 117, 125, 0.4);
+        }
+        .btn-action {
+            background: linear-gradient(135deg, #ff3366, #ff6699);
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.4);
+            font-size: 17px;
+        }
+        .btn-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.5);
+        }
+        .counter {
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Финальный экран */
+        .final-screen {
+            padding: 30px 25px;
+            text-align: center;
+        }
+        .final-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        .final-title {
+            color: #ff3366;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .final-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .highlight {
+            color: #ff3366;
+            font-weight: 600;
+        }
+        .benefits {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+        .benefit {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            color: #555;
+            font-size: 14px;
+        }
+        .benefit-icon {
+            margin-right: 12px;
+            font-size: 16px;
+            color: #4CAF50;
+        }
+        .btn-special {
+            background: linear-gradient(135deg, #ff9900, #ffcc00);
+            color: white;
+            font-size: 18px;
+            padding: 18px;
+            animation: pulse-glow 2s infinite;
+            box-shadow: 0 8px 25px rgba(255, 153, 0, 0.4);
+        }
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 8px 25px rgba(255, 153, 0, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(255, 153, 0, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 8px 25px rgba(255, 153, 0, 0.4); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>💖 Знакомства в твоем городе</h1>
+            <p>Найди свою вторую половинку сегодня</p>
+        </div>
+
+        <!-- Анкета 1 -->
+        <div class="profile" id="profile1">
+            <img src="https://i.ibb.co/21pWtSZs/photo2.jpg" alt="Анна" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">Анна</div>
+                <div class="profile-age">25 лет</div>
+                <div class="profile-stats">
+                    <div class="stat online">Онлайн</div>
+                    <div class="stat">1.2 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Ищу серьезные отношения с мужчиной, который ценит искренность. Люблю романтику и душевные вечера.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Следующая анкета →</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Анне</button>
+                <div class="counter">Анкета 1 из 8 • Просмотров сегодня: 247</div>
+            </div>
+        </div>
+
+        <!-- Анкета 2 -->
+        <div class="profile hidden" id="profile2">
+            <img src="https://i.ibb.co/qY79s4bW/photo1.jpg" alt="Мария" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">Мария</div>
+                <div class="profile-age">23 года</div>
+                <div class="profile-stats">
+                    <div class="stat online">Онлайн</div>
+                    <div class="stat">0.8 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Мечтаю встретить надежного мужчину для создания семьи. Ценю ум и доброе сердце.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Следующая анкета →</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Марии</button>
+                <div class="counter">Анкета 2 из 8 • Просмотров сегодня: 189</div>
+            </div>
+        </div>
+
+        <!-- Анкета 3 -->
+        <div class="profile hidden" id="profile3">
+            <img src="https://i.ibb.co/Kp1shgs2/photo3.jpg" alt="София" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">София</div>
+                <div class="profile-age">27 лет</div>
+                <div class="profile-stats">
+                    <div class="stat">Была 5 мин назад</div>
+                    <div class="stat">2.1 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Люблю активный отдых и приключения. Ищу партнера, с которым можно покорить весь мир!</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Следующая анкета →</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Софии</button>
+                <div class="counter">Анкета 3 из 8 • Просмотров сегодня: 156</div>
+            </div>
+        </div>
+
+        <!-- Анкета 4 -->
+        <div class="profile hidden" id="profile4">
+            <img src="https://i.ibb.co/RknG8JwJ/photo4.jpg" alt="Виктория" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">Виктория</div>
+                <div class="profile-age">24 года</div>
+                <div class="profile-stats">
+                    <div class="stat online">Онлайн</div>
+                    <div class="stat">3.4 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Верю в настоящую любовь и судьбу. Ищу мужчину с добрым сердцем для серьезных отношений.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Следующая анкета →</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Виктории</button>
+                <div class="counter">Анкета 4 из 8 • Просмотров сегодня: 134</div>
+            </div>
+        </div>
+
+        <!-- Анкета 5 -->
+        <div class="profile hidden" id="profile5">
+            <img src="https://i.ibb.co/QvRRnX3x/photo5.jpg" alt="Елена" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">Елена</div>
+                <div class="profile-age">26 лет</div>
+                <div class="profile-stats">
+                    <div class="stat">Была 8 мин назад</div>
+                    <div class="stat">1.7 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Устала от одиночества. Ищу сильного, но нежного мужчину, который не побоится серьезных отношений.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Следующая анкета →</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Елене</button>
+                <div class="counter">Анкета 5 из 8 • Просмотров сегодня: 121</div>
+            </div>
+        </div>
+
+        <!-- Анкета 6 -->
+        <div class="profile hidden" id="profile6">
+            <img src="https://i.ibb.co/XxcDL8Dw/photo6.jpg" alt="Карина" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">Карина</div>
+                <div class="profile-age">22 года</div>
+                <div class="profile-stats">
+                    <div class="stat online">Онлайн</div>
+                    <div class="stat">0.5 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Жизнь слишком коротка для скуки! Ищу партнера для путешествий, смеха и большой любви.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Следующая анкета →</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Карине</button>
+                <div class="counter">Анкета 6 из 8 • Просмотров сегодня: 98</div>
+            </div>
+        </div>
+
+        <!-- Анкета 7 -->
+        <div class="profile hidden" id="profile7">
+            <img src="https://i.ibb.co/tpCSXCgB/photo7.jpg" alt="Алиса" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">Алиса</div>
+                <div class="profile-age">28 лет</div>
+                <div class="profile-stats">
+                    <div class="stat online">Онлайн</div>
+                    <div class="stat">2.8 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Обожаю спонтанность и яркие эмоции! Ищу мужчину, который составит компанию в моих приключениях.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Следующая анкета →</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Алисе</button>
+                <div class="counter">Анкета 7 из 8 • Просмотров сегодня: 87</div>
+            </div>
+        </div>
+
+        <!-- Анкета 8 -->
+        <div class="profile hidden" id="profile8">
+            <img src="https://i.ibb.co/8tYQNbb/photo8.jpg" alt="Дарья" class="profile-img">
+            <div class="profile-content">
+                <div class="profile-name">Дарья</div>
+                <div class="profile-age">25 лет</div>
+                <div class="profile-stats">
+                    <div class="stat">Была 12 мин назад</div>
+                    <div class="stat">1.9 км от вас</div>
+                </div>
+                <div class="bio">
+                    <p class="bio-text">Ищу мужчину для серьезных отношений и создания семьи. Люблю домашний уют и душевные разговоры.</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="btn btn-next" onclick="showNext()">Посмотреть итоги</button>
+                <button class="btn btn-action" onclick="goToSite()">💌 Написать Дарье</button>
+                <div class="counter">Анкета 8 из 8 • Просмотров сегодня: 76</div>
+            </div>
+        </div>
+
+        <!-- Финальный экран -->
+        <div class="profile hidden final-screen" id="finalScreen">
+            <div class="final-icon">🎯</div>
+            <div class="final-title">Начни общение прямо сейчас!</div>
+            
+            <p class="final-text">Ты увидел <span class="highlight">8 девушек</span> которые ищут отношения именно в твоем районе.</p>
+            
+            <div class="benefits">
+                <div class="benefit"><span class="benefit-icon">✅</span> 941 девушка онлайн в радиусе 5 км</div>
+                <div class="benefit"><span class="benefit-icon">✅</span> Быстрая регистрация за 1 минуту</div>
+                <div class="benefit"><span class="benefit-icon">✅</span> Первое сообщение - бесплатно</div>
+                <div class="benefit"><span class="benefit-icon">✅</span> Начни общение сразу после регистрации</div>
+            </div>
+
+            <p class="final-text">Не упусти свой шанс найти любовь сегодня!</p>
+            
+            <button class="btn btn-special" onclick="goToSite()">
+                🚀 НАЧАТЬ ЗНАКОМСТВО БЕСПЛАТНО
+            </button>
+            
+            <div class="counter">За последний час 53 мужчины начали общение</div>
+        </div>
+    </div>
+
+    <script>
+        let currentProfile = 1;
+        const totalProfiles = 8;
+
+        function showNext() {
+            document.getElementById('profile' + currentProfile).classList.add('hidden');
+            
+            if (currentProfile === totalProfiles) {
+                document.getElementById('finalScreen').classList.remove('hidden');
+            } else {
+                currentProfile++;
+                document.getElementById('profile' + currentProfile).classList.remove('hidden');
+            }
+        }
+
+        function goToSite() {
+            // Получаем UTM-метки
+            const urlParams = new URLSearchParams(window.location.search);
+            const source = urlParams.get('utm_source') || 'direct';
+            
+            // Ваш смартлинк с UTM-метками
+            const smartlink = 'https://tone.affomelody.com/click?pid=76975&offer_id=25' + 
+                              '&utm_source=' + source + 
+                              '&utm_medium=prelanding' + 
+                              '&utm_campaign=dating_offer';
+            
+            // Перенаправляем
+            window.location.href = smartlink;
+        }
+
+        // Автоперелистывание каждые 12 секунд
+        setInterval(showNext, 12000);
+    </script>
+</body>
+</html>
