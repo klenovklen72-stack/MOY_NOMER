@@ -19,66 +19,25 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Анимированные сердечки на фоне */
-        .hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.3);
-            animation: float 6s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
         }
         
         .container {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             text-align: center;
             max-width: 400px;
             width: 100%;
-            position: relative;
-            z-index: 1;
-            backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.5);
         }
         
         .title {
             color: #e84393;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
             margin-bottom: 15px;
             text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         .subtitle {
@@ -91,18 +50,24 @@
         .highlight {
             color: #e84393;
             font-weight: bold;
-            font-size: 20px;
         }
         
         .urgent {
             background: linear-gradient(135deg, #fd79a8, #e84393);
             color: white;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border-radius: 10px;
             margin: 15px 0;
             font-weight: bold;
-            animation: pulse-urgent 2s infinite;
+            animation: pulse-urgent 1.5s infinite;
             box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
+            cursor: pointer;
+            border: 2px solid white;
+        }
+        
+        .urgent:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.6);
         }
         
         @keyframes pulse-urgent {
@@ -110,76 +75,56 @@
                 transform: scale(1);
             }
             50% {
-                transform: scale(1.05);
+                transform: scale(1.02);
             }
         }
         
         .button {
             display: block;
             width: 100%;
-            padding: 20px;
-            margin: 15px 0;
+            padding: 18px;
+            margin: 12px 0;
             border: none;
-            border-radius: 15px;
-            font-size: 18px;
+            border-radius: 12px;
+            font-size: 17px;
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        
-        .button:hover::before {
-            left: 100%;
+            transition: all 0.2s ease;
         }
         
         .button-online {
             background: linear-gradient(135deg, #00b894, #00a085);
             color: white;
-            box-shadow: 0 8px 25px rgba(0, 184, 148, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.5);
         }
         
         .button-online:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 184, 148, 0.7);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 184, 148, 0.7);
         }
         
         .button-active {
             background: linear-gradient(135deg, #e17055, #d63031);
             color: white;
-            box-shadow: 0 8px 25px rgba(225, 112, 85, 0.5);
-            animation: pulse 1.5s infinite;
+            box-shadow: 0 6px 20px rgba(225, 112, 85, 0.5);
+            animation: pulse 1.2s infinite;
         }
         
         .button-active:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(225, 112, 85, 0.7);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(225, 112, 85, 0.7);
         }
         
         @keyframes pulse {
             0% {
                 transform: scale(1);
-                box-shadow: 0 8px 25px rgba(225, 112, 85, 0.5);
             }
             50% {
-                transform: scale(1.03);
-                box-shadow: 0 12px 30px rgba(225, 112, 85, 0.7);
+                transform: scale(1.02);
             }
             100% {
                 transform: scale(1);
-                box-shadow: 0 8px 25px rgba(225, 112, 85, 0.5);
             }
         }
         
@@ -187,53 +132,44 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 15px 0;
-            font-size: 16px;
+            margin: 12px 0;
+            font-size: 15px;
             color: #636e72;
             font-weight: 600;
         }
         
         .online-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background: #00b894;
             border-radius: 50%;
-            margin-right: 10px;
-            animation: blink 1.5s infinite;
+            margin-right: 8px;
+            animation: blink 1s infinite;
         }
         
         @keyframes blink {
-            0%, 50% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            51%, 100% {
-                opacity: 0.3;
-                transform: scale(0.8);
-            }
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
         }
         
         .counter {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 14px;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 13px;
             color: #636e72;
             border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
-    <!-- Анимированные сердечки -->
-    <div class="hearts" id="heartsContainer"></div>
-    
     <div class="container">
         <div class="title">🔥 Девушки онлайн ждут тебя!</div>
         <div class="subtitle">Найди свою любовь <span class="highlight">прямо сейчас</span></div>
         
-        <div class="urgent">
-            ⚡ СРОЧНО! 3 девушки просматривают твой профиль
+        <div class="urgent" onclick="handleClick('urgent_banner')">
+            ⚡️ ВАЖНО! 3 девушки СЕЙЧАС смотрят твои фото!
         </div>
         
         <div class="status">
@@ -255,47 +191,35 @@
     </div>
 
     <script>
-        // Создаем анимированные сердечки
-        function createHearts() {
-            const heartsContainer = document.getElementById('heartsContainer');
-            const heartCount = 15;
-            
-            for (let i = 0; i < heartCount; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '💖';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 6 + 's';
-                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
-                heartsContainer.appendChild(heart);
-            }
-        }
+        // Предзагрузка смартлинка для ускорения
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preconnect';
+        preloadLink.href = 'https://tone.affomelody.com';
+        document.head.appendChild(preloadLink);
         
         function handleClick(type) {
-            // Получаем UTM-метки
-            const urlParams = new URLSearchParams(window.location.search);
-            const source = urlParams.get('utm_source') || 'direct';
+            // Минимальная обработка для скорости
+            const source = new URLSearchParams(window.location.search).get('utm_source') || 'direct';
             
-            // Ваш смартлинк с UTM-метками
-            const smartlink = 'https://tone.affomelody.com/click?pid=76975&offer_id=25' + 
-                              '&utm_source=' + source + 
-                              '&utm_medium=prelanding' + 
-                              '&utm_campaign=hot_online';
-            
-            // Добавляем тип клика для аналитики
-            const finalUrl = smartlink + '&button_type=' + type;
-            
-            // Перенаправляем
-            window.location.href = finalUrl;
+            // Прямой редирект без лишних операций
+            window.location.href = 'https://tone.affomelody.com/click?pid=76975&offer_id=25' + 
+                                  '&utm_source=' + source + 
+                                  '&utm_medium=prelanding' + 
+                                  '&button_type=' + type;
         }
 
-        // Автоматическое перенаправление через 12 секунд
+        // Автоперенаправление через 8 секунд (быстрее)
         setTimeout(() => {
             handleClick('auto_redirect');
-        }, 12000);
+        }, 8000);
 
-        // Создаем сердечки при загрузке
-        document.addEventListener('DOMContentLoaded', createHearts);
+        // Быстрая загрузка - минимум скриптов
+        document.addEventListener('DOMContentLoaded', function() {
+            // Страница загружена - можно добавить быстрые эффекты
+            setTimeout(() => {
+                document.querySelector('.urgent').style.animation = 'pulse-urgent 0.8s infinite';
+            }, 1000);
+        });
     </script>
 </body>
 </html>
