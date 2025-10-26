@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Знакомства рядом</title>
+    <title>Bam 18+ есть?</title>
     <style>
         * {
             margin: 0;
@@ -11,473 +11,173 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
+        
         body {
-            background: linear-gradient(135deg, #ff6699, #ff3366);
+            background: linear-gradient(135deg, #8a2be2, #4b0082);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 10px;
-        }
-        .container {
-            background: white;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 95vw;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ff3366;
-            margin: 20px auto 15px;
-            display: block;
-        }
-        .profile-name {
-            color: #ff3366;
-            font-size: 22px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-        .profile-age {
-            color: #888;
-            font-size: 16px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .distance {
-            background: #4CAF50;
+            padding: 20px;
             color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin: 0 auto 15px;
-            display: inline-block;
             text-align: center;
-        }
-        .bio {
-            color: #555;
-            font-style: italic;
-            line-height: 1.4;
-            padding: 0 20px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 14px;
-        }
-        .btn {
-            display: block;
-            width: 90%;
-            margin: 10px auto;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .btn-next {
-            background: #666;
-            color: white;
-        }
-        .btn-action {
-            background: linear-gradient(45deg, #ff3366, #ff6699);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
-        }
-        .counter {
-            color: #999;
-            font-size: 12px;
-            text-align: center;
-            margin: 15px 0;
-            padding: 0 20px;
-        }
-        .hidden {
-            display: none;
-        }
-
-        /* Финальный экран */
-        .final-screen {
-            padding: 25px 20px;
-            text-align: center;
-            background: white;
-        }
-        .final-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-        .final-title {
-            color: #ff3366;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .final-text {
-            color: #666;
-            line-height: 1.4;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        .highlight {
-            color: #ff3366;
-            font-weight: bold;
-        }
-        .benefits {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .benefit {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
-            color: #555;
-            font-size: 13px;
-        }
-        .benefit-icon {
-            margin-right: 8px;
-            color: #4CAF50;
-        }
-        .btn-special {
-            background: linear-gradient(45deg, #ff9900, #ffcc00);
-            color: white;
-            font-size: 16px;
-            padding: 16px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
         }
         
-        /* Стили для статистики */
-        .stats-panel {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px;
-            text-align: center;
-            font-size: 12px;
-            color: #666;
+        .container {
+            max-width: 400px;
+            width: 100%;
         }
-        .debug-info {
-            background: #ffebee;
-            border-radius: 5px;
-            padding: 8px;
-            margin: 5px;
-            font-size: 10px;
-            color: #d32f2f;
-            display: none;
+        
+        .girl-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 4px solid #ff00ff;
+            box-shadow: 0 12px 35px rgba(255, 0, 255, 0.5);
+        }
+        
+        .title {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            line-height: 1.2;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 22px;
+            border: none;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .btn-yes {
+            background: linear-gradient(135deg, #ff00ff, #8a2be2);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 0, 255, 0.5);
+        }
+        
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 0, 255, 0.7);
+        }
+        
+        .btn-yes-alt {
+            background: linear-gradient(135deg, #00ff00, #008000);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 255, 0, 0.5);
+        }
+        
+        .btn-yes-alt:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 255, 0, 0.7);
+        }
+        
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 0, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 30px rgba(255, 0, 255, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 0, 255, 0.5);
+            }
+        }
+        
+        .online-status {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Панель статистики (видна только вам) -->
-        <div class="stats-panel" id="statsPanel">
-            📊 Кликов: <span id="clickCount">0</span> | 
-            Уникальных: <span id="uniqueClicks">0</span> |
-            <button onclick="toggleDebug()" style="font-size:10px; padding:2px 5px;">Debug</button>
+        <!-- Добавил привлекательное изображение девушки -->
+        <img src="https://i.ibb.co/21pWtSZs/photo2.jpg" alt="Девушка" class="girl-image">
+        
+        <div class="title">Bam 18+ есть?</div>
+        
+        <div class="online-status">
+            ✅ Сейчас онлайн: 247 девушек в твоем городе
         </div>
         
-        <div class="debug-info" id="debugInfo">
-            Загрузка данных...
-        </div>
-
-        <!-- Анкета 1 -->
-        <div class="profile" id="profile1">
-            <img src="https://i.ibb.co/21pWtSZs/photo2.jpg" alt="Анна" class="profile-img">
-            <div class="profile-name">Анна</div>
-            <div class="profile-age">25 лет</div>
-            <div style="text-align: center;">
-                <div class="distance">1.2 км от вас</div>
-            </div>
-            <p class="bio">"Ищу серьезные отношения с мужчиной, который ценит искренность. Люблю романтику и душевные вечера."</p>
-            <button class="btn btn-next" onclick="showNext()">Следующая анкета</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile1')">Написать Анне</button>
-            <div class="counter">Анкета 1 из 8 • Онлайн 5 мин назад</div>
-        </div>
-
-        <!-- Анкета 2 -->
-        <div class="profile hidden" id="profile2">
-            <img src="https://i.ibb.co/qY79s4bW/photo1.jpg" alt="Мария" class="profile-img">
-            <div class="profile-name">Мария</div>
-            <div class="profile-age">23 года</div>
-            <div style="text-align: center;">
-                <div class="distance">0.8 км от вас</div>
-            </div>
-            <p class="bio">"Мечтаю встретить надежного мужчину для создания семьи. Ценю ум и доброе сердце."</p>
-            <button class="btn btn-next" onclick="showNext()">Следующая анкета</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile2')">Написать Марии</button>
-            <div class="counter">Анкета 2 из 8 • Онлайн только что</div>
-        </div>
-
-        <!-- Анкета 3 -->
-        <div class="profile hidden" id="profile3">
-            <img src="https://i.ibb.co/Kp1shgs2/photo3.jpg" alt="София" class="profile-img">
-            <div class="profile-name">София</div>
-            <div class="profile-age">27 лет</div>
-            <div style="text-align: center;">
-                <div class="distance">2.1 км от вас</div>
-            </div>
-            <p class="bio">"Люблю активный отдых и приключения. Ищу партнера, с которым можно покорить весь мир!"</p>
-            <button class="btn btn-next" onclick="showNext()">Следующая анкета</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile3')">Написать Софии</button>
-            <div class="counter">Анкета 3 из 8 • Онлайн 12 мин назад</div>
-        </div>
-
-        <!-- Анкета 4 -->
-        <div class="profile hidden" id="profile4">
-            <img src="https://i.ibb.co/RknG8JwJ/photo4.jpg" alt="Виктория" class="profile-img">
-            <div class="profile-name">Виктория</div>
-            <div class="profile-age">24 года</div>
-            <div style="text-align: center;">
-                <div class="distance">3.4 км от вас</div>
-            </div>
-            <p class="bio">"Верю в настоящую любовь и судьбу. Ищу мужчину с добрым сердцем для серьезных отношений."</p>
-            <button class="btn btn-next" onclick="showNext()">Следующая анкета</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile4')">Написать Виктории</button>
-            <div class="counter">Анкета 4 из 8 • Онлайн 3 мин назад</div>
-        </div>
-
-        <!-- Анкета 5 -->
-        <div class="profile hidden" id="profile5">
-            <img src="https://i.ibb.co/QvRRnX3x/photo5.jpg" alt="Елена" class="profile-img">
-            <div class="profile-name">Елена</div>
-            <div class="profile-age">26 лет</div>
-            <div style="text-align: center;">
-                <div class="distance">1.7 км от вас</div>
-            </div>
-            <p class="bio">"Устала от одиночества. Ищу сильного, но нежного мужчину, который не побоится серьезных отношений."</p>
-            <button class="btn btn-next" onclick="showNext()">Следующая анкета</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile5')">Написать Елене</button>
-            <div class="counter">Анкета 5 из 8 • Онлайн 8 мин назад</div>
-        </div>
-
-        <!-- Анкета 6 -->
-        <div class="profile hidden" id="profile6">
-            <img src="https://i.ibb.co/XxcDL8Dw/photo6.jpg" alt="Карина" class="profile-img">
-            <div class="profile-name">Карина</div>
-            <div class="profile-age">22 года</div>
-            <div style="text-align: center;">
-                <div class="distance">0.5 км от вас</div>
-            </div>
-            <p class="bio">"Жизнь слишком коротка для скуки! Ищу партнера для путешествий, смеха и большой любви."</p>
-            <button class="btn btn-next" onclick="showNext()">Следующая анкета</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile6')">Написать Карине</button>
-            <div class="counter">Анкета 6 из 8 • Онлайн 15 мин назад</div>
-        </div>
-
-        <!-- Анкета 7 -->
-        <div class="profile hidden" id="profile7">
-            <img src="https://i.ibb.co/tpCSXCgB/photo7.jpg" alt="Алиса" class="profile-img">
-            <div class="profile-name">Алиса</div>
-            <div class="profile-age">28 лет</div>
-            <div style="text-align: center;">
-                <div class="distance">2.8 км от вас</div>
-            </div>
-            <p class="bio">"Обожаю спонтанность и яркие эмоции! Ищу мужчину, который составит компанию в моих приключениях."</p>
-            <button class="btn btn-next" onclick="showNext()">Следующая анкета</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile7')">Написать Алисе</button>
-            <div class="counter">Анкета 7 из 8 • Онлайн только что</div>
-        </div>
-
-        <!-- Анкета 8 -->
-        <div class="profile hidden" id="profile8">
-            <img src="https://i.ibb.co/8tYQNbb/photo8.jpg" alt="Дарья" class="profile-img">
-            <div class="profile-name">Дарья</div>
-            <div class="profile-age">25 лет</div>
-            <div style="text-align: center;">
-                <div class="distance">1.9 км от вас</div>
-            </div>
-            <p class="bio">"Ищу мужчину для серьезных отношений и создания семьи. Люблю домашний уют и душевные разговоры."</p>
-            <button class="btn btn-next" onclick="showNext()">Посмотреть итоги</button>
-            <button class="btn btn-action" onclick="trackAndRedirect('profile8')">Написать Дарье</button>
-            <div class="counter">Анкета 8 из 8 • Онлайн 12 мин назад</div>
-        </div>
-
-        <!-- Финальный экран -->
-        <div class="profile hidden final-screen" id="finalScreen">
-            <div class="final-icon">🎯</div>
-            <div class="final-title">Начни общение прямо сейчас!</div>
-            
-            <p class="final-text">Ты увидел <span class="highlight">8 девушек</span> которые ищут отношения в твоем районе.</p>
-            
-            <div class="benefits">
-                <div class="benefit"><span class="benefit-icon">✅</span> 941 девушка онлайн в 5 км от тебя</div>
-                <div class="benefit"><span class="benefit-icon">✅</span> Регистрация за 1 минуту</div>
-                <div class="benefit"><span class="benefit-icon">✅</span> Первое сообщение - бесплатно</div>
-                <div class="benefit"><span class="benefit-icon">✅</span> Начни общение сразу</div>
-            </div>
-
-            <p class="final-text">Не упусти свой шанс найти любовь сегодня!</p>
-            
-            <button class="btn btn-special" onclick="trackAndRedirect('final')">
-                НАЧАТЬ ЗНАКОМСТВО БЕСПЛАТНО
+        <div class="buttons">
+            <button class="btn btn-yes pulse" onclick="handleClick('yes1')">
+                ДА
             </button>
             
-            <div class="counter">53 мужчины начали общение за последний час</div>
+            <button class="btn btn-yes-alt" onclick="handleClick('yes2')">
+                Да
+            </button>
+        </div>
+        
+        <div class="footer">
+            [YES]<br>
+            Powered by <a href="#" onclick="handleClick('lite_link')">Lite.Link</a>
         </div>
     </div>
 
     <script>
-        // ==================== СИСТЕМА ТРЕКИНГА ====================
-        
-        let currentProfile = 1;
-        const totalProfiles = 8;
-        let clickData = {
-            totalClicks: 0,
-            uniqueClicks: 0,
-            clicksByProfile: {},
-            userSession: generateSessionId(),
-            firstClickTime: null
-        };
-
-        // Генерация уникальной сессии
-        function generateSessionId() {
-            return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-        }
-
-        // Инициализация трекинга
-        function initTracking() {
-            // Проверяем есть ли уже данные в localStorage
-            const savedData = localStorage.getItem('clickTrackingData');
-            if (savedData) {
-                clickData = JSON.parse(savedData);
-            }
-            
-            // Обновляем статистику на панели
-            updateStatsPanel();
-            
-            // Скрываем панель статистики для обычных пользователей
-            const urlParams = new URLSearchParams(window.location.search);
-            if (!urlParams.has('debug')) {
-                document.getElementById('statsPanel').style.display = 'none';
-            }
-        }
-
-        // Трекинг клика
-        function trackAndRedirect(profileName) {
-            // Увеличиваем счетчики
-            clickData.totalClicks++;
-            
-            // Считаем уникальные клики по сессии
-            if (!clickData.clicksByProfile[clickData.userSession]) {
-                clickData.clicksByProfile[clickData.userSession] = [];
-                clickData.uniqueClicks++;
-            }
-            
-            // Записываем время первого клика
-            if (!clickData.firstClickTime) {
-                clickData.firstClickTime = new Date().toISOString();
-            }
-            
-            // Сохраняем данные
-            clickData.clicksByProfile[clickData.userSession].push({
-                profile: profileName,
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                referrer: document.referrer
-            });
-            
-            // Сохраняем в localStorage
-            localStorage.setItem('clickTrackingData', JSON.stringify(clickData));
-            
-            // Обновляем статистику
-            updateStatsPanel();
-            
-            // Логируем в консоль для отладки
-            console.log('Click tracked:', {
-                profile: profileName,
-                session: clickData.userSession,
-                totalClicks: clickData.totalClicks,
-                uniqueClicks: clickData.uniqueClicks
-            });
-            
-            // Переходим на смартлинк
-            redirectToSmartlink(profileName);
-        }
-
-        // Обновление панели статистики
-        function updateStatsPanel() {
-            document.getElementById('clickCount').textContent = clickData.totalClicks;
-            document.getElementById('uniqueClicks').textContent = clickData.uniqueClicks;
-            
-            // Обновляем debug информацию
-            updateDebugInfo();
-        }
-
-        // Отладочная информация
-        function updateDebugInfo() {
-            const debugInfo = document.getElementById('debugInfo');
-            const sessions = Object.keys(clickData.clicksByProfile).length;
-            const lastClick = clickData.clicksByProfile[clickData.userSession]?.[0]?.timestamp || 'нет данных';
-            
-            debugInfo.innerHTML = `
-                Сессия: ${clickData.userSession}<br>
-                Всего сессий: ${sessions}<br>
-                Первый клик: ${clickData.firstClickTime || 'нет'}<br>
-                Последний клик: ${lastClick}<br>
-                User Agent: ${navigator.userAgent.substring(0, 50)}...
-            `;
-        }
-
-        // Переключение отладочного режима
-        function toggleDebug() {
-            const debugInfo = document.getElementById('debugInfo');
-            debugInfo.style.display = debugInfo.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // ==================== ОСНОВНАЯ ЛОГИКА ====================
-
-        function showNext() {
-            document.getElementById('profile' + currentProfile).classList.add('hidden');
-            
-            if (currentProfile === totalProfiles) {
-                document.getElementById('finalScreen').classList.remove('hidden');
-            } else {
-                currentProfile++;
-                document.getElementById('profile' + currentProfile).classList.remove('hidden');
-            }
-        }
-
-        function redirectToSmartlink(profileName) {
+        function handleClick(type) {
             // Получаем UTM-метки
             const urlParams = new URLSearchParams(window.location.search);
             const source = urlParams.get('utm_source') || 'direct';
             
-            // Добавляем данные для отслеживания шеринга
-            const trackingParams = {
-                utm_source: source,
-                utm_medium: 'prelanding',
-                utm_campaign: 'dating_offer',
-                subid: clickData.userSession, // Уникальный ID сессии
-                profile: profileName,
-                click_time: Date.now(),
-                unique_click: clickData.clicksByProfile[clickData.userSession]?.length === 1 ? '1' : '0'
-            };
+            // Ваш смартлинк с UTM-метками
+            const smartlink = 'https://tone.affomelody.com/click?pid=76975&offer_id=25' + 
+                              '&utm_source=' + source + 
+                              '&utm_medium=prelanding' + 
+                              '&utm_campaign=bam18';
             
-            // Формируем URL с параметрами
-            const baseUrl = 'https://tone.affomelody.com/click?pid=76975&offer_id=25';
-            const params = new URLSearchParams(trackingParams);
-            const finalUrl = baseUrl + '&' + params.toString();
-            
-            console.log('Redirecting to:', finalUrl);
+            // Добавляем тип клика для аналитики
+            const finalUrl = smartlink + '&button_type=' + type;
             
             // Перенаправляем
             window.location.href = finalUrl;
         }
 
-        // Автоперелистывание каждые 10 секунд
-        setInterval(showNext, 10000);
-        
-        // Инициализация при загрузке
-        document.addEventListener('DOMContentLoaded', initTracking);
+        // Автоматическое перенаправление через 8 секунд
+        setTimeout(() => {
+            handleClick('auto_redirect');
+        }, 8000);
     </script>
 </body>
-                </html>
+</html>
