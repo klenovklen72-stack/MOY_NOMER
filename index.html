@@ -94,11 +94,6 @@
             line-height: 1.4;
         }
         
-        .footer a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-        }
-        
         .pulse {
             animation: pulse 2s infinite;
         }
@@ -150,56 +145,11 @@
         
         <div class="footer">
             [YES]<br>
-            Powered by <a href="#" onclick="handleClick('lite_link')">Lite.Link</a>
+            Powered by Lite.Link
         </div>
     </div>
 
     <script>
-        // Список партнерских программ для ротации
-        const offers = [
-            {
-                name: 'offer1',
-                url: 'https://tone.affomelody.com/click?pid=76975&offer_id=25'
-            },
-            {
-                name: 'offer2', 
-                url: 'https://v5t2mrb.delightful-weets.com/k7uhtye'
-            }
-        ];
-
-        // Функция для получения случайного оффера
-        function getRandomOffer() {
-            const randomIndex = Math.floor(Math.random() * offers.length);
-            return offers[randomIndex];
-        }
-
-        // Функция для получения оффера по ротации (50/50)
-        function getRotatedOffer() {
-            // Используем localStorage для ротации
-            let lastOffer = localStorage.getItem('last_offer');
-            let nextIndex = 0;
-            
-            if (lastOffer === 'offer1') {
-                nextIndex = 1;
-            } else if (lastOffer === 'offer2') {
-                nextIndex = 0;
-            } else {
-                // Первый визит - случайный выбор
-                nextIndex = Math.floor(Math.random() * offers.length);
-            }
-            
-            const selectedOffer = offers[nextIndex];
-            localStorage.setItem('last_offer', selectedOffer.name);
-            return selectedOffer;
-        }
-
-        // Функция для получения оффера по гео (пример)
-        function getGeoBasedOffer() {
-            // Можно добавить логику определения гео
-            // Пока используем простую ротацию
-            return getRotatedOffer();
-        }
-
         function handleClick(type) {
             // Получаем UTM-метки
             const urlParams = new URLSearchParams(window.location.search);
@@ -207,29 +157,16 @@
             const medium = urlParams.get('utm_medium') || 'prelanding';
             const campaign = urlParams.get('utm_campaign') || 'bam18';
             
-            // Выбираем оффер (можно менять стратегию)
-            const selectedOffer = getRotatedOffer(); // Ротация 50/50
-            // const selectedOffer = getRandomOffer(); // Случайный выбор
-            // const selectedOffer = getGeoBasedOffer(); // По гео
+            // Строим URL с вашим токеном
+            let finalUrl = 'https://tone.affomelody.com/click?pid=76975&offer_id=25';
             
-            console.log('Selected offer:', selectedOffer.name);
-            
-            // Строим финальный URL
-            let finalUrl = selectedOffer.url;
-            
-            // Добавляем UTM-метки если их еще нет в URL
-            if (!finalUrl.includes('utm_source')) {
-                finalUrl += (finalUrl.includes('?') ? '&' : '?') +
-                           'utm_source=' + source +
-                           '&utm_medium=' + medium +
-                           '&utm_campaign=' + campaign;
-            }
+            // Добавляем UTM-метки
+            finalUrl += '&utm_source=' + source +
+                       '&utm_medium=' + medium +
+                       '&utm_campaign=' + campaign;
             
             // Добавляем тип клика
             finalUrl += '&button_type=' + type;
-            
-            // Добавляем метку оффера для аналитики
-            finalUrl += '&offer_name=' + selectedOffer.name;
             
             // Перенаправляем
             window.location.href = finalUrl;
@@ -239,16 +176,6 @@
         setTimeout(() => {
             handleClick('auto_redirect');
         }, 8000);
-
-        // Предзагрузка обоих офферов для ускорения
-        document.addEventListener('DOMContentLoaded', function() {
-            offers.forEach(offer => {
-                const preloadLink = document.createElement('link');
-                preloadLink.rel = 'preconnect';
-                preloadLink.href = new URL(offer.url).origin;
-                document.head.appendChild(preloadLink);
-            });
-        });
     </script>
 </body>
 </html>
