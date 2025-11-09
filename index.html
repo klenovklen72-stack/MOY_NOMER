@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bam 18+ есть?</title>
+    <title>Девушки онлайн ждут тебя!</title>
     <style>
         * {
             margin: 0;
@@ -13,169 +13,212 @@
         }
         
         body {
-            background: linear-gradient(135deg, #8a2be2, #4b0082);
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #ff4757);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            color: white;
-            text-align: center;
         }
         
         .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center;
             max-width: 400px;
             width: 100%;
-        }
-        
-        .girl-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 20px;
-            object-fit: cover;
-            margin-bottom: 25px;
-            border: 4px solid #ff00ff;
-            box-shadow: 0 12px 35px rgba(255, 0, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
         
         .title {
-            font-size: 34px;
+            color: #e84393;
+            font-size: 26px;
             font-weight: bold;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-            line-height: 1.2;
-        }
-        
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            padding: 22px;
-            border: none;
-            border-radius: 15px;
-            font-size: 22px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
         
-        .btn-yes {
-            background: linear-gradient(135deg, #ff00ff, #8a2be2);
+        .subtitle {
+            color: #2d3436;
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .highlight {
+            color: #e84393;
+            font-weight: bold;
+        }
+        
+        .urgent {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
             color: white;
-            box-shadow: 0 8px 25px rgba(255, 0, 255, 0.5);
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: bold;
+            animation: pulse-urgent 1.5s infinite;
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
+            cursor: pointer;
+            border: 2px solid white;
         }
         
-        .btn-yes:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255, 0, 255, 0.7);
+        .urgent:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.6);
         }
         
-        .btn-yes-alt {
-            background: linear-gradient(135deg, #00ff00, #008000);
+        @keyframes pulse-urgent {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+        
+        .button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .button-online {
+            background: linear-gradient(135deg, #00b894, #00a085);
             color: white;
-            box-shadow: 0 8px 25px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.5);
         }
         
-        .btn-yes-alt:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 255, 0, 0.7);
+        .button-online:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 184, 148, 0.7);
         }
         
-        .footer {
-            margin-top: 25px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
+        .button-active {
+            background: linear-gradient(135deg, #e17055, #d63031);
+            color: white;
+            box-shadow: 0 6px 20px rgba(225, 112, 85, 0.5);
+            animation: pulse 1.2s infinite;
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
+        .button-active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(225, 112, 85, 0.7);
         }
         
         @keyframes pulse {
             0% {
                 transform: scale(1);
-                box-shadow: 0 8px 25px rgba(255, 0, 255, 0.5);
             }
             50% {
-                transform: scale(1.05);
-                box-shadow: 0 12px 30px rgba(255, 0, 255, 0.7);
+                transform: scale(1.02);
             }
             100% {
                 transform: scale(1);
-                box-shadow: 0 8px 25px rgba(255, 0, 255, 0.5);
             }
         }
         
-        .online-status {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            font-size: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 12px 0;
+            font-size: 15px;
+            color: #636e72;
+            font-weight: 600;
+        }
+        
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #00b894;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        .counter {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #636e72;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://i.ibb.co/21pWtSZs/photo2.jpg" alt="Девушка" class="girl-image">
+        <div class="title">🔥 Девушки онлайн ждут тебя!</div>
+        <div class="subtitle">Найди свою любовь <span class="highlight">прямо сейчас</span></div>
         
-        <div class="title">Bam 18+ есть?</div>
-        
-        <div class="online-status">
-            ✅ Сейчас онлайн: 247 девушек в твоем городе
+        <div class="urgent" onclick="handleClick('urgent_banner')">
+            ⚡️ ВАЖНО! 3 девушки СЕЙЧАС смотрят твои фото!
         </div>
         
-        <div class="buttons">
-            <button class="btn btn-yes pulse" onclick="handleClick('yes1')">
-                ДА
-            </button>
-            
-            <button class="btn btn-yes-alt" onclick="handleClick('yes2')">
-                Да
-            </button>
+        <div class="status">
+            <div class="online-dot"></div>
+            СЕЙЧАС ОНЛАЙН: 247 девушек в твоем городе
         </div>
         
-        <div class="footer">
-            [YES]<br>
-            Powered by Lite.Link
+        <button class="button button-online" onclick="handleClick('primary')">
+            💖 ОНЛАЙН | НАПИШИ ПЕРВОЙ
+        </button>
+        
+        <button class="button button-active" onclick="handleClick('secondary')">
+            💌 ОНЛАЙН | ПОЛУЧИ ОТВЕТ
+        </button>
+        
+        <div class="counter">
+            ⏰ Успей! За последний час 53 мужчины уже начали общение
         </div>
     </div>
 
     <script>
+        // Предзагрузка для ускорения
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preconnect';
+        preloadLink.href = 'https://v5t2mrb.delightful-weets.com';
+        document.head.appendChild(preloadLink);
+        
         function handleClick(type) {
-            // Получаем UTM-метки
-            const urlParams = new URLSearchParams(window.location.search);
-            const source = urlParams.get('utm_source') || 'direct';
-            const medium = urlParams.get('utm_medium') || 'prelanding';
-            const campaign = urlParams.get('utm_campaign') || 'bam18';
+            // Минимальная обработка для скорости
+            const source = new URLSearchParams(window.location.search).get('utm_source') || 'direct';
             
-            // Строим URL с вашим токеном
-            let finalUrl = 'https://tone.affomelody.com/click?pid=76975&offer_id=25';
-            
-            // Добавляем UTM-метки
-            finalUrl += '&utm_source=' + source +
-                       '&utm_medium=' + medium +
-                       '&utm_campaign=' + campaign;
-            
-            // Добавляем тип клика
-            finalUrl += '&button_type=' + type;
-            
-            // Перенаправляем
-            window.location.href = finalUrl;
+            // Прямой редирект на ваш токен
+            window.location.href = 'https://v5t2mrb.delightful-weets.com/k7uhtye' + 
+                                  '?utm_source=' + source + 
+                                  '&utm_medium=prelanding' + 
+                                  '&button_type=' + type;
         }
 
-        // Автоматическое перенаправление через 8 секунд
+        // Автоперенаправление через 8 секунд
         setTimeout(() => {
             handleClick('auto_redirect');
         }, 8000);
+
+        // Быстрая загрузка
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelector('.urgent').style.animation = 'pulse-urgent 0.8s infinite';
+            }, 1000);
+        });
     </script>
 </body>
 </html>
